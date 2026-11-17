@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wuthering Waves — Aldo Faturrachman // Solaris-3 Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Hidden Offscreen YouTube BGM Audio Player (30iNYa6Wl1o) -->
+  <div id="bgm-yt-container" aria-hidden="true">
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- STAGE 1: TITLE / LOGIN SCREEN -->
+  <section id="title-screen" class="screen active">
+    <canvas id="title-canvas"></canvas>
+    <div class="title-vignette"></div>
+
+    <!-- Top-Left WuWa Logo -->
+    <div class="wuwa-brand">
+      <div class="wuwa-sub">SOLARIS-3 // RESONATOR ARCHIVE</div>
+      <h1 class="wuwa-title">WUTHERING<br><span>WAVES</span></h1>
+      <div class="wuwa-journal-tag">ALDO FATURRACHMAN // TKJ PORTFOLIO</div>
+    </div>
+
+    <!-- Top-Right System Build Stamp -->
+    <div class="sys-stamp">
+      OS_Windows_Product_3.8.0_9245589_3.8.11_9463235 ** HD
+    </div>
+
+    <!-- Right-Side 5 Circular Game Icons -->
+    <div class="side-controls">
+      <button class="circle-btn" id="btn-exit" title="Reset Session" aria-label="Exit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      </button>
+      <button class="circle-btn" id="btn-bulletin" title="Expedition Bulletin" aria-label="Bulletin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </button>
+      <button class="circle-btn" id="btn-tools" title="Particle & Visual Density" aria-label="Tools">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </button>
+      <button class="circle-btn" id="btn-account" title="Resonator Quick Card" aria-label="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button class="circle-btn" id="btn-settings-open" title="Settings & Audio" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </div>
+
+    <!-- Bottom Center Server Selector + Tap Prompt -->
+    <div class="title-bottom-center">
+      <div class="server-pill" id="server-selector" title="Switch Solaris-3 Node">
+        <span class="server-dot"></span>
+        <span id="server-name">SEA // BLITAR</span>
+        <span class="server-ping">24ms</span>
+        <span class="server-arrow">▾</span>
+      </div>
+      <button id="tap-to-land" class="tap-prompt">Tap to land in Solaris-3</button>
+      <div class="copyright-line">© 2026 ALDO FATURRACHMAN // SOLARIS-3 EXPEDITION</div>
+    </div>
+
+    <!-- Bottom Right Login Status -->
+    <div class="login-status" id="login-status-text">Login Status: 5</div>
+  </section>
+
+  <!-- Tacet Mark Flash Overlay -->
+  <div id="tacet-flash" aria-hidden="true">
+    <div class="tacet-diamond"></div>
+  </div>
+
+  <!-- STAGE 2: LORE LOADING SCREEN ("Lilies in a Dying Dream") -->
+  <section id="loading-screen" class="screen" aria-hidden="true">
+    <canvas id="loading-canvas"></canvas>
+    <div class="loading-vignette"></div>
+
+    <div class="lore-box">
+      <div class="lore-bar"></div>
+      <div class="lore-content">
+        <div class="lore-kicker">SOLARIS-3 ARCHIVE // RESONANCE FREQUENCY</div>
+        <h2 class="lore-title">Lilies in a Dying Dream</h2>
+        <p class="lore-desc">
+          Beyond the Retroact Rain, crystallized memories drift like pale lilies across a quiet horizon. Every network packet, server route, and line of code leaves an echo that endures.
+        </p>
+      </div>
+    </div>
+
+    <div class="loading-footer">
+      <div class="loading-status-row">
+        <span id="loading-phase-text">Synchronizing Terminal Frequency...</span>
+        <span id="loading-percent">10%</span>
+      </div>
+      <div class="loading-track">
+        <div class="loading-fill" id="loading-fill"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE 3: MAIN WORLD HUD & PORTFOLIO -->
+  <main id="main-world" class="screen" aria-hidden="true">
+    <canvas id="world-bg-canvas"></canvas>
+
+    <!-- In-Game Top Spatial HUD -->
+    <header class="in-game-hud">
+      <div class="hud-left">
+        <!-- Circular Radar Minimap -->
+        <div class="minimap-ring" title="Solaris-3 Sector Radar">
+          <div class="minimap-sweep"></div>
+          <div class="minimap-player"></div>
+          <span class="minimap-coord">BLITAR // 01</span>
+        </div>
+
+        <!-- Quest Tracker -->
+        <div class="quest-tracker">
+          <div class="quest-badge">◆ MAIN QUEST</div>
+          <div class="quest-title">Aldo Faturrachman // Network & IT Expedition</div>
+          <div class="quest-sub">Kelas 11 TKJ — SMKN 1 Blitar |NISN: 0098099657</div>
+        </div>
+      </div>
+
+      <!-- Center Navigation -->
+      <nav class="hud-nav" aria-label="Main Sections">
+        <a href="#profile" class="nav-link active" data-i18n="nav_profile">Profil</a>
+        <a href="#about" class="nav-link" data-i18n="nav_about">Tentang</a>
+        <a href="#education" class="nav-link" data-i18n="nav_edu">Pendidikan</a>
+        <a href="#skills" class="nav-link" data-i18n="nav_skills">Keahlian</a>
+        <a href="#projects" class="nav-link" data-i18n="nav_projects">Proyek</a>
+        <a href="#achievements" class="nav-link" data-i18n="nav_achievements">Sertifikat</a>
+        <a href="#contact" class="nav-link" data-i18n="nav_contact">Kontak</a>
+      </nav>
+
+      <!-- Right HUD Audio & Controls -->
+      <div class="hud-right">
+        <div class="bgm-pill" title="Background Resonance Audio">
+          <button id="bgm-toggle" class="hud-mini-btn" aria-label="Play or Pause BGM">❚❚</button>
+          <div class="eq-bars" id="eq-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <button id="bgm-mute" class="hud-mini-btn" aria-label="Mute or Unmute">🔊</button>
+          <input type="range" id="bgm-volume" min="0" max="100" value="65" aria-label="BGM Volume" />
+        </div>
+        <button id="btn-replay-intro" class="hud-action-btn" title="Putar Ulang Cutscene Pembuka">↺ INTRO</button>
+        <button id="btn-hud-settings" class="hud-action-btn" title="Settings">⚙</button>
+      </div>
+    </header>
+
+    <!-- PORTFOLIO CONTENT CONTAINER -->
+    <div class="journal-container">
+      <!-- 01 — RESONATOR PROFILE -->
+      <section id="profile" class="journal-section">
+        <div class="section-header">
+          <span class="section-code">01 — RESONATOR DOSSIER</span>
+          <h2 class="section-title" data-i18n="sec_profile_title">Aldo Faturrachman</h2>
+          <p class="section-subtitle" data-i18n="sec_profile_sub">Siswa Teknik Komputer dan Jaringan (TKJ) | Network & IT Enthusiast</p>
+        </div>
+
+        <div class="profile-grid">
+          <!-- Avatar Showcase Card -->
+          <div class="wuwa-card avatar-card">
+            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+            <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+            <div class="avatar-header">
+              <span class="rarity-stars">★★★★★</span>
+              <span class="attr-badge" id="attr-badge">ELECTRO // TKJ</span>
+            </div>
+
+            <div class="avatar-visual" id="avatar-visual">
+              <!-- Replace assets/foto-aldo.jpg with your photo in VS Code -->
+              <img src="assets/foto-aldo.jpg" alt="Foto Profil Aldo Faturrachman" class="profile-photo" onerror="this.style.display='none'; document.getElementById('rover-fallback-svg').style.display='block';" />
+              <svg id="rover-fallback-svg" viewBox="0 0 220 260" class="rover-art" style="display:none;">
+                <defs>
+                  <linearGradient id="cloakGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1c2331"/>
+                    <stop offset="100%" stop-color="#0b0e14"/>
+                  </linearGradient>
+                  <linearGradient id="goldTrim" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#f3c65f"/>
+                    <stop offset="100%" stop-color="#ffe7a3"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="110" cy="115" r="78" fill="none" stroke="rgba(243,198,95,0.28)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                <circle cx="110" cy="115" r="64" fill="none" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
+                <path d="M55,245 L72,145 L110,132 L148,145 L165,245 Z" fill="url(#cloakGrad)" stroke="url(#goldTrim)" stroke-width="1.5"/>
+                <path d="M90,140 L110,185 L130,140 Z" fill="#e2e8f0" opacity="0.9"/>
+                <circle cx="110" cy="96" r="26" fill="#f8fafc"/>
+                <path d="M80,96 C80,66 140,66 140,96 C144,114 136,126 132,128 C134,106 126,88 110,86 C94,88 86,106 88,128 C84,126 76,114 80,96 Z" fill="#141821"/>
+                <ellipse cx="101" cy="100" rx="3.2" ry="2" fill="#f3c65f"/>
+                <ellipse cx="119" cy="100" rx="3.2" ry="2" fill="#f3c65f"/>
+                <polygon points="110,152 114,162 110,172 106,162" fill="#f3c65f"/>
+              </svg>
+              <div class="avatar-nameplate" id="display-codename">ROVER // ALDO</div>
+            </div>
+
+            <div class="avatar-switchers">
+              <button class="chip-btn active" data-attr="ELECTRO // TKJ">Electro</button>
+              <button class="chip-btn" data-attr="SPECTRO // NET">Spectro</button>
+              <button class="chip-btn" id="btn-customize-profile">✎ Edit Profil</button>
+            </div>
+          </div>
+
+          <!-- Resonator Information Card -->
+          <div class="wuwa-card info-card">
+            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+            <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+            <div class="dossier-topline">
+              <span>✦ RESONATOR INFORMATION ✦</span>
+              <span class="uid-tag">NISN: 0098099657</span>
+            </div>
+
+            <h3 class="resonator-fullname" id="prof-name">Aldo Faturrachman</h3>
+            <p class="resonator-role" id="prof-role">Siswa Teknik Komputer dan Jaringan (TKJ) | Network & IT Enthusiast</p>
+
+            <div class="meta-grid">
+              <div class="meta-box">
+                <span class="meta-label">▣ KELAS & SEKOLAH</span>
+                <strong class="meta-value" id="prof-class">Kelas 11 TKJ — SMKN 1 Blitar</strong>
+              </div>
+              <div class="meta-box">
+                <span class="meta-label">✦ TEMPAT, TANGGAL LAHIR</span>
+                <strong class="meta-value" id="prof-birth">Blitar, 17 November 2009</strong>
+              </div>
+              <div class="meta-box">
+                <span class="meta-label">⌖ DOMISILI</span>
+                <strong class="meta-value" id="prof-location">Blitar, Jawa Timur, Indonesia</strong>
+              </div>
+              <div class="meta-box">
+                <span class="meta-label">♪ HOBI & MINAT</span>
+                <strong class="meta-value" id="prof-hobby">Bermain Game & Mendengarkan Musik</strong>
+              </div>
+            </div>
+
+            <!-- Union Level Bar -->
+            <div class="union-box">
+              <div class="union-row">
+                <span>UNION LEVEL // COMPETENCY STATUS</span>
+                <strong class="gold-text">KKNI LEVEL II — KOMPETEN</strong>
+              </div>
+              <div class="union-bar">
+                <div class="union-fill" style="width: 85%"></div>
+              </div>
+              <div class="union-sub">
+                <span>NETWORK INFRASTRUCTURE & SERVER ADMIN</span>
+                <span>2025 – SEKARANG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 — TENTANG SAYA -->
+      <section id="about" class="journal-section">
+        <div class="section-header">
+          <span class="section-code">02 — RESONATOR CHRONICLE</span>
+          <h2 class="section-title" data-i18n="sec_about_title">Tentang Saya</h2>
+          <p class="section-subtitle">Perjalanan mempelajari infrastruktur jaringan, administrasi server, dan teknologi web.</p>
+        </div>
+
+        <div class="wuwa-card story-card">
+          <div class="story-emblem">✦</div>
+          <div class="story-body">
+            <span class="story-tag">BIODATA & MINAT</span>
+            <h3>Halo! Saya Aldo Faturrachman</h3>
+            <p>
+              Halo! Saya <strong>Aldo Faturrachman</strong> (lahir di Blitar, <strong>17 November 2009</strong>), saat ini menempuh pendidikan di <strong>Kelas 11 TKJ, SMKN 1 Blitar</strong>. Saya memiliki minat besar di bidang infrastruktur jaringan komputer, administrasi server, pemecahan masalah perangkat keras (<em>troubleshooting</em>), serta pengembangan web dasar.
+            </p>
+            <p>
+              Saya antusias mempelajari teknologi baru dan membangun sistem jaringan yang stabil serta efisien. Di luar aktivitas praktik laboratorium jaringan, hobi dan minat saya adalah <strong>bermain game</strong> dan <strong>mendengarkan musik</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 — RIWAYAT PENDIDIKAN -->
+      <section id="education" class="journal-section">
+        <div class="section-header">
+          <span class="section-code">03 — ACADEMIC ARCHIVE</span>
+          <h2 class="section-title" data-i18n="sec_edu_title">Riwayat Pendidikan</h2>
+          <p class="section-subtitle">Jejak pendidikan formal dari tingkat dasar hingga sekolah menengah kejuruan.</p>
+        </div>
+
+        <div class="edu-grid">
+          <!-- SMKN 1 Blitar -->
+          <div class="wuwa-card edu-card">
+            <div class="edu-header">
+              <img src="assets/logo-smk.png" alt="Logo SMKN 1 Blitar" class="school-logo" onerror="this.style.display='none'" />
+              <div>
+                <span class="time-tag">2025 – SEKARANG</span>
+                <h3>SMKN 1 Blitar</h3>
+                <div class="edu-major">Teknik Komputer dan Jaringan (Kelas 11)</div>
+              </div>
+            </div>
+            <p class="edu-addr">⌖ Jl. Kenari No. 30, Kel. Plosokerep, Kec. Sananwetan, Kota Blitar, Jawa Timur 66134</p>
+          </div>
+
+          <!-- SMP Negeri 1 Sutojayan -->
+          <div class="wuwa-card edu-card">
+            <div class="edu-header">
+              <img src="assets/logo-smp.png" alt="Logo SMP Negeri 1 Sutojayan" class="school-logo" onerror="this.style.display='none'" />
+              <div>
+                <span class="time-tag">2022 – 2025</span>
+                <h3>SMP Negeri 1 Sutojayan</h3>
+                <div class="edu-major">Sekolah Menengah Pertama</div>
+              </div>
+            </div>
+            <p class="edu-addr">⌖ Jl. Diponegoro, Kel. Kedungbunder, Kec. Sutojayan, Kabupaten Blitar, Jawa Timur 66172</p>
+          </div>
+
+          <!-- SD Negeri Kalipang 01 -->
+          <div class="wuwa-card edu-card">
+            <div class="edu-header">
+              <img src="assets/logo-sd.png" alt="Logo SD Negeri Kalipang 01" class="school-logo" onerror="this.style.display='none'" />
+              <div>
+                <span class="time-tag">2016 – 2022</span>
+                <h3>SD Negeri Kalipang 01</h3>
+                <div class="edu-major">Sekolah Dasar</div>
+              </div>
+            </div>
+            <p class="edu-addr">⌖ Jl. Raya Kalipang, Kel. Kalipang, Kec. Sutojayan, Kabupaten Blitar, Jawa Timur 66172</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 — KEAHLIAN (FORTE CIRCUIT) -->
+      <section id="skills" class="journal-section">
+        <div class="section-header">
+          <span class="section-code">04 — FORTE CIRCUIT</span>
+          <h2 class="section-title" data-i18n="sec_skills_title">Keahlian (Skills)</h2>
+          <p class="section-subtitle">Kompetensi teknis di bidang jaringan komputer, perangkat keras, simulasi, dan web.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="wuwa-card skill-card">
+            <div class="skill-top"><span class="skill-num">01</span><span class="skill-rank">CORE // NETWORKING</span></div>
+            <h3>Jaringan Komputer</h3>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+            <div class="skill-tags">LAN/WAN · Subnetting · Routing & Switching · Crimping UTP</div>
+            <p>Konfigurasi jaringan lokal maupun luas, pembagian blok IP subnetting, routing dinamis/statis, serta terminasi kabel UTP.</p>
+          </div>
+
+          <div class="wuwa-card skill-card">
+            <div class="skill-top"><span class="skill-num">02</span><span class="skill-rank">SYSTEM // HARDWARE</span></div>
+            <h3>Sistem & Perangkat</h3>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+            <div class="skill-tags">Windows · Linux · Perakitan PC · Troubleshooting</div>
+            <p>Instalasi dan konfigurasi sistem operasi Windows & Linux, perakitan komputer, serta diagnosis kerusakan hardware & software.</p>
+          </div>
+
+          <div class="wuwa-card skill-card">
+            <div class="skill-top"><span class="skill-num">03</span><span class="skill-rank">LAB // SIMULATION</span></div>
+            <h3>Tools & Simulasi</h3>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+            <div class="skill-tags">Cisco Packet Tracer · Winbox (MikroTik) · VirtualBox / VMware</div>
+            <p>Perancangan simulasi topologi enterprise, manajemen router MikroTik melalui Winbox, dan virtualisasi server.</p>
+          </div>
+
+          <div class="wuwa-card skill-card">
+            <div class="skill-top"><span class="skill-num">04</span><span class="skill-rank">FRONTEND // WEB</span></div>
+            <h3>Web Dasar</h3>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+            <div class="skill-tags">HTML · CSS · GitHub Pages</div>
+            <p>Membangun struktur halaman web responsif serta memublikasikan portofolio statis secara online menggunakan GitHub Pages.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 — PROYEK (PROJECTS) -->
+      <section id="projects" class="journal-section">
+        <div class="section-header">
+          <span class="section-code">05 — ECHO DATA BANK & QUEST LOG</span>
+          <h2 class="section-title" data-i18n="sec_projects_title">Proyek (Projects)</h2>
+          <p class="section-subtitle">Dokumentasi praktik konfigurasi jaringan dan pengembangan halaman web.</p>
+        </div>
+
+        <div class="quests-grid">
+          <article class="wuwa-card quest-card">
+            <div class="quest-header">
+              <span class="echo-cost">01 // CISCO PACKET TRACER</span>
+              <span class="quest-status">COMPLETED</span>
+            </div>
+            <h3>Simulasi Jaringan Kantor Multi-Lantai</h3>
+            <p>Merancang topologi jaringan menggunakan VLAN, DHCP Server, dan Static Routing untuk menghubungkan beberapa divisi secara efisien.</p>
+            <div class="quest-stack"><span>VLAN</span><span>DHCP Server</span><span>Static Routing</span><span>Cisco</span></div>
+          </article>
+
+          <article class="wuwa-card quest-card">
+            <div class="quest-header">
+              <span class="echo-cost">02 // MIKROTIK ROUTEROS</span>
+              <span class="quest-status">COMPLETED</span>
+            </div>
+            <h3>Konfigurasi Hotspot & Manajemen Bandwidth MikroTik</h3>
+            <p>Mengatur pembagian kecepatan internet menggunakan Simple Queue serta kustomisasi halaman login hotspot.</p>
+            <div class="quest-stack"><span>Winbox</span><span>Simple Queue</span><span>Hotspot Login</span></div>
+          </article>
+
+          <article class="wuwa-card quest-card">
+            <div class="quest-header">
+              <span class="echo-cost">03 // WEB DEVELOPMENT</span>
+              <span class="quest-status">ACTIVE</span>
+            </div>
+            <h3>Website Portofolio Pribadi</h3>
+            <p>Membangun halaman profil dan dokumentasi proyek statis menggunakan HTML dan CSS yang di-hosting melalui GitHub Pages.</p>
+            <div class="quest-stack"><span>HTML5</span><span>CSS3</span><span>GitHub Pages</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 06 — SERTIFIKASI & PENGHARGAAN -->
+      <section id="achievements" class="journal-section">
+        <div class="section-header">
+          <span class="section-code">06 — TROPHIES & CERTIFICATES</span>
+          <h2 class="section-title" data-i18n="sec_achievements_title">Sertifikasi & Penghargaan</h2>
+          <p class="section-subtitle">Bukti pencapaian uji kompetensi keahlian dan kegiatan keagamaan.</p>
+        </div>
+
+        <div class="trophy-grid">
+          <!-- Sertifikat Kompetensi -->
+          <div class="wuwa-card cert-card">
+            <img src="assets/sertifikat-ujikom.jpg" alt="Sertifikat Kompetensi Teknik Komputer dan Jaringan" class="cert-thumb" onerror="this.style.display='none'" />
+            <div class="cert-body">
+              <span class="trophy-badge">PREDIKAT: KOMPETEN // 23 JUNI 2026</span>
+              <h3>Sertifikat Kompetensi — Teknik Komputer dan Jaringan</h3>
+              <p class="cert-org">SMKN 1 Blitar & CV. FIA Sejahtera Abadi</p>
+              <p>Skema Sertifikasi KKNI Level II pada Kompetensi Keahlian Teknik Komputer Jaringan (Nomor: <strong>400.3/692/101.6.11.12/2026</strong>).</p>
+            </div>
+          </div>
+
+          <!-- Sertifikat Pondok Ramadan -->
+          <div class="wuwa-card cert-card">
+            <img src="assets/sertifikat-apis.jpg" alt="Sertifikat Kegiatan Pondok Ramadan 1446 H" class="cert-thumb" onerror="this.style.display='none'" />
+            <div class="cert-body">
+              <span class="trophy-badge">27 FEBRUARI – 2 MARET 2026</span>
+              <h3>Sertifikat Kegiatan Pondok Ramadan 1446 H</h3>
+              <p class="cert-org">Pondok Pesantren Asrama Perguruan Islam Salafiyyah (APIS) Sanan Gondang, Blitar</p>
+              <p>Telah mengikuti kegiatan Pondok Ramadan 1446 H Gelombang 3 yang diselenggarakan di Pondok Pesantren APIS Sanan Gondang, Gandusari, Blitar.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 — KONTAK & MEDIA SOSIAL -->
+      <section id="contact" class="journal-section">
+        <div class="section-header">
+          <span class="section-code">07 — WAVELINE COMM-LINK</span>
+          <h2 class="section-title" data-i18n="sec_contact_title">Kontak & Media Sosial</h2>
+          <p class="section-subtitle">Hubungi saya secara langsung atau terhubung melalui jaringan sosial berikut.</p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="wuwa-card social-panel">
+            <h3 class="panel-heading">FREKUENSI & TAUTAN LANGSUNG</h3>
+            <div class="social-list">
+              <a href="mailto:aldo35812@gmail.com" class="social-item">
+                <span class="social-label">✉ EMAIL</span>
+                <strong>aldo35812@gmail.com</strong>
+              </a>
+              <a href="https://wa.me/6281805752376" target="_blank" rel="noopener" class="social-item">
+                <span class="social-label">✆ WHATSAPP</span>
+                <strong>081805752376</strong>
+              </a>
+              <a href="https://github.com/aldo-35812" target="_blank" rel="noopener" class="social-item">
+                <span class="social-label">⌘ GITHUB</span>
+                <strong>github.com/aldo-35812</strong>
+              </a>
+              <a href="https://instagram.com/ABOUT.YOU_AL" target="_blank" rel="noopener" class="social-item">
+                <span class="social-label">◈ INSTAGRAM</span>
+                <strong>@ABOUT.YOU_AL</strong>
+              </a>
+              <div class="social-item">
+                <span class="social-label">◆ DISCORD</span>
+                <strong>kiro._1</strong>
+              </div>
+            </div>
+          </div>
+
+          <form id="waveline-form" class="wuwa-card contact-card">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sender-name">NAMA PENGIRIM</label>
+                <input type="text" id="sender-name" placeholder="Masukkan nama Anda..." required />
+              </div>
+              <div class="form-group">
+                <label for="sender-email">ALAMAT EMAIL</label>
+                <input type="email" id="sender-email" placeholder="nama@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sender-msg">PESAN TRANSMISI</label>
+              <textarea id="sender-msg" rows="4" placeholder="Tulis pesan atau ajakan kolaborasi..." required></textarea>
+            </div>
+            <button type="submit" class="primary-wuwa-btn">KIRIM SINYAL WAVELINE ➔</button>
+            <div id="transmit-feedback" class="transmit-feedback"></div>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <footer class="journal-footer">
+      <span>© 2026 ALDO FATURRACHMAN // SMKN 1 BLITAR — XI TKJ</span>
+      <span>SOLARIS-3 EXPEDITION // BGM FREQUENCY: 30iNYa6Wl1o</span>
+    </footer>
+  </main>
+
+  <!-- SETTINGS & CUSTOMIZE MODALS -->
+  <div id="modal-backdrop" class="modal-backdrop" aria-hidden="true">
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-box" hidden>
+      <div class="modal-head">
+        <h3>TERMINAL SETTINGS</h3>
+        <button class="modal-close" data-close-modal>✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-row">
+          <label for="lang-select">Bahasa / Language</label>
+          <select id="lang-select">
+            <option value="id">Indonesia</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label>Background Music (YouTube Audio 30iNYa6Wl1o)</label>
+          <button id="modal-bgm-btn" class="chip-btn active">Playing</button>
+        </div>
+        <div class="setting-row">
+          <label for="modal-vol">Master BGM Volume</label>
+          <input type="range" id="modal-vol" min="0" max="100" value="65" />
+        </div>
+        <div class="setting-row">
+          <label>Audio Lokal Cadangan (.mp3 / .ogg)</label>
+          <input type="file" id="local-audio-input" accept="audio/*" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Customize Dossier Modal -->
+    <div id="customize-modal" class="modal-box" hidden>
+      <div class="modal-head">
+        <h3>EDIT PROFIL RESONATOR</h3>
+        <button class="modal-close" data-close-modal>✕</button>
+      </div>
+      <form id="customize-form" class="modal-body">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="edit-name" value="Aldo Faturrachman" />
+        </div>
+        <div class="form-group">
+          <label>Kelas & Sekolah</label>
+          <input type="text" id="edit-class" value="Kelas 11 TKJ — SMKN 1 Blitar" />
+        </div>
+        <div class="form-group">
+          <label>Domisili</label>
+          <input type="text" id="edit-location" value="Blitar, Jawa Timur, Indonesia" />
+        </div>
+        <div class="form-group">
+          <label>Hobi & Minat</label>
+          <input type="text" id="edit-hobby" value="Bermain Game & Mendengarkan Musik" />
+        </div>
+        <button type="submit" class="primary-wuwa-btn">SIMPAN PERUBAHAN</button>
+      </form>
+    </div>
+
+    <!-- Bulletin / Info Modal -->
+    <div id="info-modal" class="modal-box" hidden>
+      <div class="modal-head">
+        <h3 id="info-modal-title">SOLARIS-3 BULLETIN</h3>
+        <button class="modal-close" data-close-modal>✕</button>
+      </div>
+      <div class="modal-body" id="info-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
